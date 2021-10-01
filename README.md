@@ -48,7 +48,7 @@ Build a dashboard that allows the user to select a specific campaign from a list
 ## Task 2 Instructions
 1. Clone the repo
    ```sh
-   git clone 
+   git clone https://github.com/SameC137/AdludioChallenge.git
    ```
 2. Navigate to the web folder
     ```sh
