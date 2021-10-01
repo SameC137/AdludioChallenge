@@ -101,6 +101,14 @@ The notebook for this task is in the Decisiveness.ipynb file located in the note
 to install the dependencies.The notebook contains the final approach as well as description of approaches considered for task.
 
 
+## Optional Installs to view the attempts in Score notebook
+```python
+  pip install score_old_reqirements.txt
+```
+
+These are libraries on top of the ones in requirements.txt that are needed for that notebook. poisson_etest requires a fortran complier installed. 
+
+
 
 
  
