@@ -1,0 +1,1 @@
+[('encoding', OneHotEncoder(handle_unknown='ignore')), ('logistic', LogisticRegression(max_iter=7600))]

@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/same/Documents/AdludioChallenge/notebooks/mlruns/0/9ec8659b61274c1d9947147f5b2997e4/artifacts
+end_time: 1633067461082
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 9ec8659b61274c1d9947147f5b2997e4
+run_uuid: 9ec8659b61274c1d9947147f5b2997e4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1633067285984
+status: 3
+tags: []
+user_id: same

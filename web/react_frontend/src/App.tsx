@@ -48,6 +48,31 @@ function fetchCampaign(campaignId:string){
   })
 }
 
+function fetchCampaignIds(){
+  const url='http://localhost:5000/api/campaigns_list'
+  return axios.get( url ,{
+    method: 'GET',
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then(({data})=> {
+    // handle success
+    return data
+  })
+  .catch(function (error:any) {
+    // handle error
+    if(error.response){
+      
+    console.error(error.response.data);
+    throw new Error(error.response.data);
+    }else{
+      
+    console.error(error.message);
+    throw new Error(error.message);
+    }
+  })
+}
+
 const ErrorDisplay:React.FC<{error:boolean, errorMessage:string}>=({error,errorMessage})=>{
   if(error){
       return(
@@ -65,6 +90,7 @@ const ErrorDisplay:React.FC<{error:boolean, errorMessage:string}>=({error,errorM
 const App:React.FC =()=> {
   const [campaignId, setCampaignId]=useState("");
   const [cachedcampaignId, setCachedCampaignId]=useState("");
+  const [campaginIdsList,setCampaignIdsList]=useState([]);
   // const [fetchError, setFetchError]=useState<boolean>(false);
   // const [errorMessage,setErrorMessage]=useState<string>("");
   const [campaignData,setCampaignData]=useState([]);
@@ -96,10 +122,17 @@ const App:React.FC =()=> {
 
   }
 
-  // useEffect(() => {
-  //     console.log("here")
-  //     console.log(campaignData)
-  //   });
+  useEffect(() => {
+    fetchCampaignIds().then((data)=>{
+        setCampaignIdsList(data.campaigns)
+    }
+    ).catch((error)=>{
+          
+      alert("Error while fetching campaign ids"+error.message)
+  })
+    
+  
+  });
 
   return(
     <ThemeProvider theme={theme}>

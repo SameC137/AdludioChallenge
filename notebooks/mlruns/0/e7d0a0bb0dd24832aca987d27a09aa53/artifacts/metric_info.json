@@ -1,0 +1,6 @@
+{
+  "GridSearchCV_score-2_x_train": "GridSearchCV.score(X=x_train, y=y_train)",
+  "GridSearchCV_score-3_x_test": "GridSearchCV.score(X=x_test, y=y_test)",
+  "GridSearchCV_score-4_x_test": "GridSearchCV.score(X=x_test, y=y_test)",
+  "GridSearchCV_score_x_train": "GridSearchCV.score(X=x_train, y=y_train)"
+}
