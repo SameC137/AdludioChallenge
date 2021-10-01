@@ -76,6 +76,7 @@ function fetchCampaignIds(){
   })
 }
 
+//Error Display Component that was abandoned in favor of the alert
 const ErrorDisplay:React.FC<{error:boolean, errorMessage:string}>=({error,errorMessage})=>{
   if(error){
       return(
