@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 
-import MaterialTable from "material-table";
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-
-import { ThemeProvider } from '@mui/material/styles';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const theme=createTheme({
   palette: {
@@ -20,7 +17,15 @@ const theme=createTheme({
   },
 })
 
+
+const useStyles = makeStyles((theme:any) => ({
+  root: {
+    color: theme.palette.primary.main,
+  }
+}));
 export const TableDisplay:React.FC<{campaign:any[], title:string}> = ({campaign,title})=>{
+  
+    const classes = useStyles(theme);
     const columns=[
         {
           title: "CampaignId",
@@ -49,11 +54,13 @@ export const TableDisplay:React.FC<{campaign:any[], title:string}> = ({campaign,
         }
       ]
     
+        
         if(campaign !== undefined && campaign.length!== 0 ){
             return(
-                <MuiThemeProvider theme={theme}>
-                    <MaterialTable  title={title} data={campaign} columns={columns} />
-                </MuiThemeProvider>)
+                <ThemeProvider theme={theme}><div  className={classes.root}>
+                    <MaterialTable title={title} data={campaign} columns={columns} />
+                    </div>
+                </ThemeProvider>)
         }else{
             return(
                     <h2 style={{textAlign:"center"}}>No Campaign selected</h2>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './App.css';
-import MaterialTable from "material-table";
-import {Button,Input,Paper} from "@mui/material";
+
+import {Button,Paper,Select,MenuItem, SelectChangeEvent, InputLabel } from "@mui/material";
 import { TableDisplay } from './TableDisplay';
 // import { ThemeOptions } from '@mui/material/styles';
 
-import { ThemeProvider } from '@mui/material/styles';
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
 
 
 const theme=createTheme({
@@ -21,6 +22,8 @@ const theme=createTheme({
     },
   },
 })
+
+
 
 
 function fetchCampaign(campaignId:string){
@@ -95,7 +98,6 @@ const App:React.FC =()=> {
   // const [errorMessage,setErrorMessage]=useState<string>("");
   const [campaignData,setCampaignData]=useState([]);
   const  campaignRef=useRef<HTMLInputElement>(null);
-  
 					
   
 
@@ -134,9 +136,24 @@ const App:React.FC =()=> {
   
   });
 
+  const campaignOptions=()=>{
+    var options:any[]=[]
+    // setCampaignId(campaginIdsList[1])
+    campaginIdsList.forEach(campaign => {
+          options.push(<MenuItem value={campaign}>{campaign}</MenuItem>)
+      }); 
+
+    return options
+  }
+
+  
+  const handleCampaignSelect= (event:SelectChangeEvent<string>)=>{
+    setCampaignId( event.target.value)
+
+}
   return(
     <ThemeProvider theme={theme}>
-      <div className="campaign">
+      <div className="campaign" style={{ backgroundImage: "url(/background.png)" , backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundBlendMode: "darken"}}>
         <Paper  style={{
           padding:20,
           minWidth: "60%",
@@ -144,10 +161,18 @@ const App:React.FC =()=> {
         }}
         >
           <div className="form-container">
-          <Input placeholder="Campaign Id" inputRef={campaignRef}  onChange={handleCampaignChange}/> 
+          {/* <Input placeholder="Campaign Id" inputRef={campaignRef}  onChange={handleCampaignChange}/>  */}
+          <div>
+          <InputLabel id="campaign-select-label">Campaign Id</InputLabel>
+
+          <Select  labelId="campaign-select-label" value={campaignId} label="Campaign Id"  onChange={handleCampaignSelect}>
+           
+          {campaignOptions()}
+          </Select>
+           </div>
           <Button color="primary" variant="contained" onClick={handleFetch}>Fetch Campaign</Button>
           </div>
-          <TableDisplay title={"Campaign "+cachedcampaignId} campaign={campaignData} />
+          <TableDisplay  title={"Campaign "+cachedcampaignId} campaign={campaignData} />
            {/* <ErrorDisplay error={fetchError} errorMessage={errorMessage} /> */}
         </Paper>
      </div>    

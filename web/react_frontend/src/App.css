@@ -6,11 +6,16 @@
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-color: #EAEEF3;
+  background-color: #BAA6FB;
 }
 
 .form-container{
   display: flex;
   justify-content: space-around;
   padding-bottom: 20px;
+}
+
+.MuiMenu-list{
+  display: flex;
+  flex-direction: column;
 }

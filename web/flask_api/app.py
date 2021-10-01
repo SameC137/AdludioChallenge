@@ -41,7 +41,7 @@ def getCampaignSites():
 @app.route('/api/campaigns_list', methods=['GET'])
 def getCampaigns():
     campaigns={
-        "campaigns": aggregated_data["CampaignId"].unique()
+        "campaigns": aggregated_data["CampaignId"].unique().tolist()
     }
     
     return jsonify(campaigns)
